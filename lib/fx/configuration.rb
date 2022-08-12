@@ -40,9 +40,25 @@ module Fx
     # @return Boolean
     attr_accessor :dump_functions_at_beginning_of_schema
 
+    # Bypass dump_functions_at_beginning_of_schema in order to 
+    # dump the selected functions at beggining of schema
+    #
+    # Defaults to []
+    # @return Array
+    attr_accessor :force_dump_functions_at_beginning_of_schema
+
+    # Bypass dump_functions_at_beginning_of_schema in order to 
+    # dump the selected functions at end of schema
+    #
+    # Defaults to []
+    # @return Array
+    attr_accessor :force_dump_functions_at_end_of_schema
+
     def initialize
       @database = Fx::Adapters::Postgres.new
       @dump_functions_at_beginning_of_schema = false
+      @force_dump_functions_at_beginning_of_schema = []
+      @force_dump_functions_at_end_of_schema = []
     end
   end
 end
